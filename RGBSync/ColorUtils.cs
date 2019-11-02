@@ -4,7 +4,7 @@ namespace RGBSync
 {
     class ColorUtils
     {
-        public static Color HSL2RGB(double h, double sl, double l)
+        public static Color HSL2RGB(double h, double sl = 1, double l = 0.5)
         {
             double v;
             double r, g, b;
@@ -21,14 +21,14 @@ namespace RGBSync
                 int sextant;
                 double fract, vsf, mid1, mid2;
 
-                m = l + l - v;
-                sv = (v - m) / v;
-                h *= 6.0;
+                m       = l + l - v;
+                sv      = (v - m) / v;
+                h      *= 6.0;
                 sextant = (int)h;
-                fract = h - sextant;
-                vsf = v * sv * fract;
-                mid1 = m + vsf;
-                mid2 = v - vsf;
+                fract   = h - sextant;
+                vsf     = v * sv * fract;
+                mid1    = m + vsf;
+                mid2    = v - vsf;
                 switch (sextant)
                 {
                     case 0:
@@ -66,9 +66,9 @@ namespace RGBSync
 
             Color rgb = new Color();
 
-            rgb.red = Convert.ToByte(r * 255.0f);
-            rgb.green = Convert.ToByte(g * 255.0f);
-            rgb.blue = Convert.ToByte(b * 255.0f);
+            rgb.red   = Convert.ToByte(r * 255.0);
+            rgb.green = Convert.ToByte(g * 255.0);
+            rgb.blue =  Convert.ToByte(b * 255.0);
 
             return rgb;
         }
